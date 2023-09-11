@@ -9,7 +9,20 @@ public class CadastroLogin {
 
         Validacoes validacoes = new Validacoes();
 
-        System.out.println("Ja tem cadastro?[0|1]");
+        System.out.println("""
+                        :::   :::  ::::::::  ::::::::::: ::::::::::: ::::::::::
+                        :+:   :+: :+:    :+:     :+:         :+:     :+:
+                         +:+ +:+  +:+    +:+     +:+         +:+     +:+
+                          +#++:   +#+    +:+     +#+         +#+     +#++:++#
+                           +#+    +#+    +#+     +#+         +#+     +#+
+                           #+#    #+#    #+#     #+#         #+#     #+#
+                           ###     ########      ###         ###     ##########
+                                
+                Ja tem cadastro?
+                - 0 (Caso não)
+                - 1 (Caso sim)
+                - 2 (Para sair da aplicação)
+                """);
         Integer cadastrar = leitor.nextInt();
 
         String nome ="";
@@ -29,7 +42,7 @@ public class CadastroLogin {
         ArrayList user = new ArrayList();
 
         do {
-            if (cadastrar.equals(0) ){
+            if (cadastrar.equals(0)){
                 System.out.println("Fazer cadastro...");
 
                 System.out.println("Digite seu nome:");
@@ -57,11 +70,11 @@ public class CadastroLogin {
                 matricula = leitorTexto.nextLine();
 
                 Boolean isSenhaValida = validacoes.isSenhaValida(senha);
-//                Boolean isSenhaComplexa = validacoes.isSenhaComplexa(senha);
+                Boolean isSenhaComplexa = validacoes.isSenhaComplexa(senha);
                 Boolean emailNaoTemEspacos = validacoes.naoTemEspacos(email);
                 Boolean isEmailValido = validacoes.isEmailValido(email);
 
-                if(isSenhaValida && emailNaoTemEspacos && isEmailValido) {
+                if(isSenhaValida && emailNaoTemEspacos && isEmailValido && isSenhaComplexa) {
                     todasValidacoes = true;
                 } else {
                     System.out.println("Dados inválidos, faça o cadastro novamente!!");
@@ -76,28 +89,25 @@ public class CadastroLogin {
         userList.add(senha);
 
         listaUsers.add(userList);
-
         System.out.println(listaUsers);
+        System.out.println("Cadastro finalizado! você será redirecionado para a tela de login!");
 
-        System.out.println("Cadastro finalizado!");
+        Boolean todasValidacoesLogin = false;
 
-        System.out.println("Digite seu email:");
-        validarEmail = leitorTexto.nextLine();
+        do {
 
-        System.out.println("Digite sua senha:");
-        validarSenha = leitorTexto.nextLine();
-
-
-        if (email.equals(validarEmail)){
-
-            if (senha.equals(validarSenha)){
-                System.out.println("Login realizado com sucesso redirecionando a tela \uD83D\uDE04");
-
-                for (int i = 0; i<=userList.size(); i++) {
-                    listaUsers.forEach(userI -> System.out.println());
-                }
+            System.out.println("Digite seu email:");
+            validarEmail = leitorTexto.nextLine();
+            System.out.println("Digite sua senha:");
+            validarSenha = leitorTexto.nextLine();
+            if (validarEmail.equals(email) && validarSenha.equals(senha)){
+                todasValidacoesLogin = true;
+            }else {
+                System.out.println("Email ou senha incorretas. Tente novamente!");
             }
-        }
+        }while (todasValidacoesLogin.equals(false));
+
+        System.out.println("Login realizado com sucesso! \uD83D\uDE04");
 
     }
 }

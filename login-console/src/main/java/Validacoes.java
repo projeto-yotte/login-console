@@ -17,19 +17,18 @@ public class Validacoes {
         String letrasMinusculas = "abcdefghijklmnopqrstuvwxyz";
 
         for (char c : senha.toCharArray()) {
+            // Esse for transforma a senha em uma cadeia de caracteres, e ele percorre digito por digito comparando com as listas acima.
+
             if (caracteresEspeciais.indexOf(c) != -1) {
                 temEspecial = true;
-                break;
             }
 
             if (letrasMaisculas.indexOf(c) != -1) {
                 temMaisculas = true;
-                break;
             }
 
             if (letrasMinusculas.indexOf(c) != -1) {
                 temMinusculas = true;
-                break;
             }
         }
         if (!temEspecial || !temMaisculas || !temMinusculas) {
