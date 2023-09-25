@@ -4,6 +4,12 @@ import java.util.Scanner;
 
 public class CadastroLogin {
     public static void main(String[] args) {
+//        Diferença entre o cadastro do site e o cadastro realizado no java:
+//
+//        O cadastro do site é direcionado a empresa que vamos prestar o serviço de monitoramento, onde estamos pedindo as informações de nome da empresa, CNPJ, e-mail e a senha. A empresa verá todos os notebooks que estão sendo monitorados, assim tendo um controle da performance de todos
+//        Já o cadastro do java é direcionado para o desenvolvedor responsável pelo notebook que será monitorado pela YOTTE. Então informações como o nome, Email, senha, o modelo da máquina, o sistema operacional serão pedidos
+
+
         Scanner leitor = new Scanner(System.in);
         Scanner leitorTexto = new Scanner(System.in);
 
